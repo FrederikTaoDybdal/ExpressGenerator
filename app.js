@@ -19,7 +19,7 @@ var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate');
 
-
+const uploadRouter = require('./routes/uploadRouter');
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 // Connection URL
@@ -56,6 +56,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
 //app.use(cookieParser('12345-67890-09876-54321'));
 
 
@@ -68,6 +69,7 @@ app.use('/users', users);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/dishes',dishRouter);
+// app.use('/imageUpload',uploadRouter);
 // app.use('/promotions',promoRouter);
 // app.use('/leaders',leaderRouter);
 
